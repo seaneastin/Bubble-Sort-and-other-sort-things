@@ -21,14 +21,14 @@ namespace Bubble_Sort
             71, 18, 21, 84, 69, 28, 11, 83, 13, 42,
             64, 58, 78, 82, 13, 9, 96, 14, 39, 89, 40, 32, 51, 85, 48, 40, 23, 15, 94, 93,
             35, 81, 1, 9, 43, 39, 15, 17, 97, 52};
-            BubbleSort(arrayToSort);
+
             for (int i = 0; i < arrayToSort.Length; i++)
             {
 
                 Console.Write(" " + arrayToSort[i] + " ");
             }
 
-
+            CocktailShakerShort(arrayToSort);
 
 
 
@@ -80,13 +80,47 @@ namespace Bubble_Sort
         }
 
 
-            public static void OptimizedBubbleSort(int[] arrayToSort)
+        public static void OptimizedBubbleSort(int[] arrayToSort)
+        {
+            bool sorting = false;
+            int length = arrayToSort.Length - 1;
+            while (!sorting)
+            {
+                sorting = true;
+                for (int i = 0; i < length; i++)
+                {
+
+                    if (arrayToSort[i] > arrayToSort[i + 1])
+                    {
+                        sort = arrayToSort[i];
+                        arrayToSort[i] = arrayToSort[i + 1];
+                        arrayToSort[i + 1] = sort;
+                        sorting = false;
+                        Swaps++;
+                    }
+
+
+
+
+                    Loops++;
+
+
+
+                }
+                length--;
+            }
+
+        }
+        public static void CocktailShakerShort(int[] arrayToSort)
+        {
             {
                 bool sorting = false;
+                int length = arrayToSort.Length - 1;
+                int start = 0;
                 while (!sorting)
                 {
                     sorting = true;
-                    for (int i = 0; i < arrayToSort.Length - 1; i++)
+                    for (int i = start; i < length; i++)
                     {
 
                         if (arrayToSort[i] > arrayToSort[i + 1])
@@ -97,18 +131,39 @@ namespace Bubble_Sort
                             sorting = false;
                             Swaps++;
                         }
+                        
 
 
 
-
-                        Loops++;
+                            Loops++;
 
 
 
                     }
-                }
+                    length--;
+                    for (int i = length; i > start; i--)
+                    {
 
+                        if (arrayToSort[i] < arrayToSort[i - 1])
+                        {
+                            sort = arrayToSort[i];
+                            arrayToSort[i] = arrayToSort[i - 1];
+                            arrayToSort[i - 1] = sort;
+                            sorting = false;
+                            Swaps++;
+                        }
+                        Loops++;
+                        
+                    }
+                    start++;
+
+
+
+                }
             }
-        
+        }
     }
-}
+    }
+
+ 
+
